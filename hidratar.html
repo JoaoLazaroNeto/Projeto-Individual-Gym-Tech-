@@ -11,7 +11,7 @@
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./site.css">
-    <link rel="icon" href="./imagens/ginastica.png">
+    <link rel="icon" href="./assets/imgs/ginastica.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -20,82 +20,65 @@
     <div class="header">
         <div class="container">
             <div class="navbar">
-            <ul class="navbar">
-                <li>
-                    <a href="./index.html"><b class="b">Home</b></a>
-                </li>
-                <li>
-                    <a href="./hidratar.html"><b class="b">Hidrate-se</b></a>
-                </li>
+                <ul class="navbar">
+                    <li>
+                        <a href="./index.html"><b class="b">Home</b></a>
+                    </li>
+                    <li>
+                        <a href="./hidratar.html"><b class="b">Hidrate-se</b></a>
+                    </li>
 
-                <img class="logo" src="./imagens/Gym_Tech-removebg-preview.png" alt="">
+                    <img class="logo" src="./imagens/Gym_Tech-removebg-preview.png" alt="">
 
-                <li>
-                    <a href="./login.html"><b class="b">Login</b></a>
-                </li>
-                <li>
-                    <a href="./Cadastro.html"><b class="b">Cadastro</b></a>
-                </li>
-            </ul>
-        </div>
-        </div>
-    </div>
-
-    <div class="socialHidratar">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-
-            <h1>Simulador Hidrate-se!</h1>
-            Insira seu nome:
-            <input type="text" id="input_nome"><br><br>
-            Insira o seu peso corporal:
-           <input type="number" id="input_peso"><br><br>
-           <button class="botaoCalcular" onclick="calcular()">Calcular</button><br><br>
-           <div  class="resultadoCalcular">
-             <div class="textoResultado" id="div_msg"></div>
-           </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="socialHidratar">
-        <div class="container">
-          <div class="boxes">
-            <div class="box">
-  
-              <h1>Simulador Hidrate-se!</h1>
-              Insira seu nome:
-              <input type="text" id="input_nome"><br><br>
-              Insira o seu peso corporal:
-             <input type="number" id="input_peso"><br><br>
-             <button class="botaoCalcular" onclick="calcular()">Calcular</button><br><br>
-             <div  class="resultadoCalcular">
-               <div class="textoResultado" id="div_msg"></div>
-             </div>
+                    <li>
+                        <a href="./login.html"><b class="b">Login</b></a>
+                    </li>
+                    <li>
+                        <a href="./login.html"><b class="b">Cadastro</b></a>
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
-      </div>
-
-    <div class="container">
-      <div class="footer">
-        <h4> João Lázaro Neto - SPTech &copy; 2024</h4>
-      </div>
     </div>
-  </body>
+
+    <div class="social">
+        <div class="container">
+            <div class="box">
+                <h1>Simulador Hidrate-se!</h1>
+                Insira seu nome:
+                <input type="text" id="input_nome"><br><br>
+                Insira o seu peso corporal:
+                <input type="number" id="input_peso"><br><br>
+                <button class="botaoCalcular" onclick="calcular()">Calcular</button><br><br>
+                <div>
+                <div class="textoResultado" id="div_msg"></div>
+            </div>
+            </div>
+            <div class="orientacaoSimulador">
+                <h1 class="tituloSimulador">Orientações:</h1>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi in dicta explicabo et tempora harum voluptate asperiores molestiae quia vel? Id delectus nesciunt voluptatum modi, ipsa aspernatur a porro maxime!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur fuga consequatur incidunt cupiditate est sapiente amet, nam magnam possimus nihil explicabo odit, unde impedit itaque iure enim? Incidunt, consectetur placeat?
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <div class="footer">
+            <h4> João Lázaro Neto - SPTech &copy; 2024</h4>
+        </div>
+    </div>
+</body>
 
 </html>
 
 <script>
-  function calcular(){
-    var nome = input_nome.value;
-    var peso = input_peso.value;
-    var pesoG = peso / 1000;
-    var qtd_agua = pesoG * 35;
+    function calcular() {
+        var nome = input_nome.value;
+        var peso = input_peso.value;
+        var pesoG = peso / 1000;
+        var qtd_agua = pesoG * 35;
 
-    div_msg.innerHTML += ` Olá ${nome}, <br><br> calculamos que a quantidade ideal de água para o seu peso corporal é de: ${qtd_agua.toFixed(1)} Litros.`;
+        div_msg.innerHTML += ` Olá ${nome}, <br><br> calculamos que a quantidade ideal de água para o seu peso corporal é de: ${qtd_agua.toFixed(1)} Litros.`;
 
-  }
+    }
 </script>
