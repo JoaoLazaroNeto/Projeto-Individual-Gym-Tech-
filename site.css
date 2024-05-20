@@ -18,6 +18,7 @@ body {
 .container {
   display: flex;
   width: 100%;
+  height: 100px;
   margin: auto;
   color: #3C58A0;
   background-color: #32b9cd;  
@@ -114,7 +115,18 @@ body {
 .social {
   background-color: #32b9cd;
   display: inline-block;
+  width: 1200px;
+  justify-content: space-evenly;
+  margin-left: 170px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.socialHidratar{
+  background-color: #32b9cd;
+  display: inline-block;
   width: 500px;
+  height: 500px;
   justify-content: space-evenly;
   margin-left: 170px;
   margin-top: 10px;
@@ -138,7 +150,12 @@ body {
   margin-top: 10px;
   height: 500px;
   padding: 30px 0;
+}
 
+.boxes{
+  display: flex;
+  width: 100%;
+  height: 100px;
 }
 
 .botaoCalcular{
@@ -146,7 +163,7 @@ body {
   color: white;
   background-color: #3C58A0;
   border-radius: 10px;
-  height: 50px;
+  height: 100px;
   width: 100px;
   align-items: center;
   justify-content: center;
@@ -165,8 +182,7 @@ body {
   background-color: #3C58A0;
   border-radius: 10px ;
   width: 400px;
-  height: 100px;
-  
+  height: 100000000000000000000px;
 }
 .social p {
   text-align: center;
@@ -218,10 +234,10 @@ body {
 }
 
 .card {
+  display: flex;
   width: 50%;
   background-color: #32b9cd;
   border-radius: 10px;
-  display: flex;
   align-items: center;
   justify-content: center;
   color: #3C58A0;
@@ -230,10 +246,13 @@ body {
   padding: 20px 0;
 }
 
+
+
 .card-cadastro{
-  display: inline-block;
+  display: flex;
   justify-content: center;
-  margin-left: 10%;
+  width: 80%;
+ 
 }
 
 .card h2 {
@@ -241,11 +260,15 @@ body {
   font-size: 30px;
 }
 
-.formulario {
+.divPai{
   display: flex;
-  height: 90%;
-  width: 80%;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.formulario {
+  display: inline-block;
+  width: 45%;
   flex-direction: column;
 }
 
@@ -282,6 +305,7 @@ body {
   height: 30px;
   align-self: center;
   margin-top: 20px;
+  margin-left: 670px;
 }
 
 .loading-div {
