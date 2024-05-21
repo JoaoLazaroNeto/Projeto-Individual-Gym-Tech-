@@ -21,15 +21,15 @@ body {
   height: 100px;
   margin: auto;
   color: #3C58A0;
-  background-color: #32b9cd;  
+  background-color: #32b9cd;
 }
 
-.imagem{
+.imagem {
   display: flex;
   height: 1500px;
 }
 
-.logo{
+.logo {
   display: flex;
   height: 80px;
   margin-left: -50px;
@@ -44,7 +44,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  
+
 }
 
 .header a {
@@ -62,8 +62,8 @@ body {
   height: 100%;
   margin: auto;
   color: white;
-  background-color: #32b9cd;  
-  
+  background-color: #32b9cd;
+
 }
 
 .navbar {
@@ -77,7 +77,7 @@ body {
   list-style-type: none;
 }
 
-.b{
+.b {
   display: flex;
   align-items: center;
   margin-top: 25px;
@@ -132,7 +132,7 @@ body {
   margin-bottom: 40px;
 }
 
-.socialHidratar{
+.socialHidratar {
   background-color: #32b9cd;
   display: inline-block;
   width: 500px;
@@ -143,7 +143,7 @@ body {
   margin-bottom: 40px;
 }
 
-.tituloSimulador{
+.tituloSimulador {
   display: flex;
   margin-left: 140px;
 }
@@ -162,14 +162,14 @@ body {
   margin-right: 150px;
 }
 
-.tituloImg{
+.tituloImg {
   display: flex;
-   margin-right: 150px;
+  margin-right: 150px;
 }
 
-.textoImg{
+.textoImg {
   display: flex;
-   margin-right: 150px;
+  margin-right: 150px;
 }
 
 .social .container .boxes {
@@ -181,13 +181,13 @@ body {
   padding: 30px 0;
 }
 
-.boxes{
+.boxes {
   display: flex;
   width: 100%;
   height: 100px;
 }
 
-.botaoCalcular{
+.botaoCalcular {
   font-family: "Barlow", sans-serif;
   border: 0;
   border-radius: 5px;
@@ -196,43 +196,43 @@ body {
   color: #fff;
   background-color: #3C58A0;
   width: 150px;
-  height: 50px;
+  height: 60px;
 }
 
-.textoResultado{
+.textoResultado {
   display: flex;
   height: 100px;
   width: 400px;
   color: white;
   background-color: #3C58A0;
-  border-radius: 10px ;
+  border-radius: 10px;
   align-items: center;
   justify-content: center;
   margin-left: 5px;
   text-align: center;
 }
 
-.resultadoCalcular{
+.resultadoCalcular {
   display: flex;
   color: white;
   background-color: #3C58A0;
-  border-radius: 10px ;
+  border-radius: 10px;
   width: 400px;
   height: 100px;
   margin-left: 100px;
   margin-top: 200px;
 }
 
-.orientacaoSimulador{
+.orientacaoSimulador {
   display: flex;
   flex-direction: column;
   color: white;
   background-color: #3C58A0;
-  border-radius: 10px ;
+  border-radius: 10px;
   width: 450px;
-  height: 350px;
+  height: 450px;
   margin-left: 100px;
-  margin-top: 100px;
+  margin-top: 60px;
   text-align: center;
 }
 
@@ -255,19 +255,32 @@ body {
 
 .footer {
   background-color: #3C58A0;
-  height: 110px;
+  height: 60px;
   width: 100%;
   color: white;
   display: flex;
   font-size: 15px;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
+}
+
+.footerSimulador {
+  background-color: #3C58A0;
+  height: 60px;
+  width: 100%;
+  color: white;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .footerHome {
   display: flex;
   background-color: #3C58A0;
-  height: 110px;
+  height: 60px;
   width: 100%;
   color: white;
   display: flex;
@@ -293,13 +306,19 @@ body {
   background-size: cover;
 }
 
+.textoLoginCadastro {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: -15px;
+}
+
 .login .container {
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.container .login{
+.container .login {
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -319,16 +338,13 @@ body {
   padding: 20px 0;
 }
 
-
-
-.card-cadastro{
+.card-cadastro {
   display: flex;
   justify-content: center;
   width: 80%;
- 
 }
 
-.card-login{
+.card-login {
   display: flex;
   justify-content: flex-start;
   width: 80%;
@@ -339,7 +355,7 @@ body {
   font-size: 30px;
 }
 
-.divPai{
+.divPai {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -372,7 +388,7 @@ body {
   border-radius: 10px;
 }
 
-.campoSelect{
+.campoSelect {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -383,7 +399,7 @@ body {
   /* color: grey; */
 }
 
-.select:disabled{
+.select:disabled {
   color: gray;
 }
 
@@ -404,7 +420,7 @@ body {
   margin-left: 670px;
 }
 
-.botaoLogin{
+.botaoLogin {
   display: inline-block;
   cursor: pointer;
   font-family: "Barlow", sans-serif;
@@ -417,7 +433,7 @@ body {
   width: 120px;
   height: 30px;
   align-self: center;
-  margin-top: 20px;
+
   /* margin-left: 1090px;  */
 }
 
@@ -434,7 +450,7 @@ body {
   height: 30px;
   align-self: center;
   margin-top: 20px;
-  }
+}
 
 .loading-div {
   width: 50px;
@@ -452,7 +468,7 @@ body {
 
 /* FORMULARIO */
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -469,7 +485,7 @@ body {
   margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
 }
@@ -523,13 +539,13 @@ input {
   color: white;
   margin-left: 100px;
   display: inline-block;
-  
+
 }
 
 .simulador .container {
   display: inline-block;
   flex-direction: row;
-  overflow: scroll; 
+  overflow: scroll;
   height: var(--tamanho-simulador);
 
 }
@@ -572,4 +588,3 @@ input {
   background-size: cover;
   animation-iteration-count: infinite;
 }
-
