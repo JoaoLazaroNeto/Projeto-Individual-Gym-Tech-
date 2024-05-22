@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
+  
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -55,7 +55,7 @@
                      -->
           <div class="campo">
             <span>Empresa:</span>
-            <select name="empresas" id="listaEmpresas">
+            <select name="treinos" id="listaTreinos">
               <option selected>Selecione uma empresa</option>
             </select>
           </div>
@@ -66,6 +66,10 @@
           <div class="campo">
             <span>E-mail:</span>
             <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+          </div>
+          <div class="campo">
+            <span>Idade:</span>
+            <input id="idade_input" type="text" placeholder="sua idade" />
           </div>
           <div class="campo">
             <span>Senha:</span>
@@ -108,13 +112,15 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
+    var treinoVar = listaTreinos.value;
+    var idadeVar = idade_input.value;
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      empresaVar == ""
+      treinoVar == "" || 
+      idadeVar == "" 
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -138,7 +144,8 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        empresaServer: empresaVar
+        treinoServer: treinoVar,
+        idadeServer: idadeVar
       }),
     })
       .then(function (resposta) {
@@ -169,13 +176,13 @@
   }
 
   function listar() {
-    fetch("/empresas/listar", {
+    fetch("/treinos/listar", {
       method: "GET",
     })
       .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+        resposta.json().then((treinos) => {
+          treinos.forEach((treino) => {
+            listaTreinos.innerHTML += `<option value='${treino.id}'>${treino.nome}</option>`;
           });
         });
       })
@@ -187,4 +194,46 @@
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
+//    function listar() {
+//   fetch("/empresas/listar", {
+//     method: "GET",
+//   })
+//     .then(function (resposta) {
+//       resposta.json().then((empresas) => {
+//         empresas.forEach((empresa) => {
+//           listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+//         });
+//       });
+//     })
+//     .catch(function (resposta) {
+//       console.log(`#ERRO: ${resposta}`);
+//     });
+// }
+
+// function sumirMensagem() {
+//   cardErro.style.display = "none";
+// }
+
 </script>
+
+<!-- function listar() {
+  fetch("/empresas/listar", {
+    method: "GET",
+  })
+    .then(function (resposta) {
+      resposta.json().then((empresas) => {
+        empresas.forEach((empresa) => {
+          listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+        });
+      });
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+function sumirMensagem() {
+  cardErro.style.display = "none";
+}
+</script> -->
