@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>GymTech | Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./site.css" />
+  <link rel="icon" href="./imagens/ginastica.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+<body onload="listar()">
+  <div class="header">
+    <div class="container">
+        <div class="navbar">
+        <ul class="navbar">
+            <li>
+                <a href="./index.html"><b class="b">Home</b></a>
+            </li>
+            <li>
+                <a href="./hidratar.html"><b class="b">Hidrate-se</b></a>
+            </li>
+
+            <img class="logo" src="./imagens/Gym_Tech-removebg-preview.png" alt="">
+
+            <li>
+                <a href="./login.html"><b class="b">Login</b></a>
+            </li>
+            <li>
+                <a href="./cadastro.html"><b class="b">Cadastro | Login</b></a>
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>
+
+  <div class="login">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="card card-cadastro">
+        <h2>Seja Bem-vindo!</h2>
+        <div class="divPai">
+        <div class="formulario">
+  
+          <div class="campo">
+          </div>
+          <div class="campo">
+            <span>Nome:</span>
+            <input id="nome_input" type="text" placeholder="Seu nome" />
+          </div>
+          <div class="campo">
+            <span>E-mail:</span>
+            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+          </div>
+          <div class="campo">
+            <span>Senha:</span>
+            <input id="senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Confirmação da Senha:</span>
+            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <button class="botaoCadastrar" onclick="cadastrar()">Cadastrar</button>
+          <div>
+            <p class="textoLoginCadastro"><b>Já possui cadastro?<br> clique aqui</b></p>
+          </div>
+          <a href='C:\Users\netoj\Desktop\Site institucional - projeto individual\login.html'><button onclick="cadastra()" class="botaoLogin">Login</button></a>
+        </div>
+        
+
+        <div class="formulario">
+  
+            <div class="campo">
+            </div>
+            <div class="campo">
+              <span>Treino:</span>
+              <select class="campoSelect" name="" id="select_treino">
+                <option  value="0" selected disabled>Selecione seu treino favorito</option>
+                <option value="1" >Treino 2</option>
+                <option value="2" >Treino 3</option>
+                <option value="3" >Treino 4</option>
+              </select>
+            </div>
+
+            <div class="campo">
+                <span>Qual sua meta na academia?:</span>
+                <select class="campoSelect" name="" id="select_meta">
+                  <option  value="0" selected disabled>Selecione sua meta:</option>
+                  <option value="1" >Emagrecer</option>
+                  <option value="2" >Ganhar massa muscular</option>
+                  <option value="3" >Melhorar condicionamento físico</option>
+                  <option value="3" >Melhorar estética corporal</option>
+                </select>
+              </div>
+
+              <div class="campo">
+                <span>Qual sua meta na academia?:</span>
+                <select class="campoSelect" name="" id="select_meta">
+                  <option  value="0" selected disabled>Selecione sua meta:</option>
+                  <option value="1" >Emagrecer</option>
+                  <option value="2" >Ganhar massa muscular</option>
+                  <option value="3" >Melhorar condicionamento físico</option>
+                  <option value="3" >Melhorar estética corporal</option>
+                </select>
+              </div>
+
+            <div class="campo">
+              <span>Idade que começou a treinar:</span>
+              <input id="email_input" type="text" placeholder="sua Idade" />
+            </div>
+
+            
+           
+            
+       
+        </div>
+        <div id="div_aguardar" class="loading-div">
+          <img src="./assets/circle-loading.gif" id="loading-gif" />
+        </div>
+        
+        <div id="div_erros_login"></div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="footer">
+    <div class="footer">
+      <h4> João Lázaro Neto - SPTech &copy; 2024</h4>
+    </div>
+  </div>
+  
+</body>
+
+</html>
+
+<script>
+</script>
