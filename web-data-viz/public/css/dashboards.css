@@ -136,9 +136,9 @@ body {
 .textoGrafico{
   display: flex;
   color: black;
-  margin-left: 20px;
-  width: 100vh;
-  margin-top: 12px;
+  margin-left: 770px;
+
+  margin-top: -400px;
   font-size: 28px;
   flex-direction: row;
 }
@@ -347,12 +347,25 @@ body {
 }
 
 canvas {
-  width: 60% !important;
+  width: 55% !important;
   height: 65% !important;
   align-items: center;
   justify-content: center;
   margin-left: 2% ;
   margin-top: 20px;
+  Color: #3C58A0;
+  background-color:#3C58A0 ;
+  border-radius: 20px;
+}
+
+.canvas2 {
+  width: 55% !important;
+  height: 65% !important;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2% ;
+  margin-top: 100px;
+  margin-bottom: 20px;
   Color: #3C58A0;
   background-color:#3C58A0 ;
   border-radius: 20px;
@@ -402,13 +415,14 @@ canvas {
 }
 
 .divDash{
-  display: flex;
+  display: inline-block;
   /* flex-direction: row; */
    background-image: url('https://img.freepik.com/fotos-gratis/fundo-texturizado-concreto-azul_53876-63608.jpg?t=st=1717458323~exp=1717461923~hmac=622cc798b0fd1de9a64046cbf0056af7364674042ef76dccc393ebde4d9aade8&w=996');
   margin-top: 5px;
   height: 85%;
   width: 95%;
   margin-left: 1.5%;
+  flex-direction: column;
   color: #161618;
   border-radius: 20px;
   overflow-y: scroll;
@@ -437,7 +451,8 @@ canvas {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #3C58A0;
+  border: 3px solid #32b9cd;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;

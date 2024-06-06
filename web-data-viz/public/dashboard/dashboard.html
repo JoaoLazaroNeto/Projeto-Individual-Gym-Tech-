@@ -59,28 +59,40 @@
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
-
         </div>
 
         <div class="dash">
-            <div class="tituloGrafico"> <h1 class="tituloGrafico">Olá, seja bem vindo a seção de Gráficos</h1></div>
+            <div class="tituloGrafico">
+                <h1 class="tituloGrafico">Olá, seja bem vindo a seção de Gráficos</h1>
+            </div>
             <div class="divDash">
-            <canvas id="myChartCanvas"></canvas>
-            <span class="textoGrafico">O principal objetivo deste gráfico é fornecer uma representação clara e concisa das preferências de treino dos usuários. Com ele, é possível identificar quais tipos de treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
-      
-            <div id="alerta">
-            </div>
+                <canvas id="myChartCanvas"></canvas>
+                <span class="textoGrafico">O principal objetivo deste gráfico é fornecer uma representação clara e
+                    concisa das preferências de treino dos usuários. Com ele, é possível identificar quais tipos de
+                    treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões
+                    estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização
+                    de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
 
-
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
+                    <canvas class="canvas2" id="myChartFaixasEtarias"></canvas>
+                    <span class="textoGrafico">O principal objetivo deste gráfico é fornecer uma representação clara e
+                        concisa das preferências de treino dos usuários. Com ele, é possível identificar quais tipos de
+                        treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões
+                        estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização
+                        de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
+                    
+                    <div id="alerta">
+                    </div>
+                    
+                    
+                    
+                    <div class="btns-dash" id="btnAquario">
+                        <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+                    </div>
+                    <div id="graficos">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
 
 
 </body>
@@ -134,6 +146,17 @@
             }]
         };
 
+        let labels2 = {
+            labels: ['18-40', '41-65', '65+'],
+            datasets: [{
+                label: 'Quantidade de usuários',
+                data: [10, 20, 30, 40, 50, 60, 70, 80, 90],
+                backgroundColor: ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5'],
+                borderColor: 'white',
+                borderWidth: 2,
+            }],
+        };
+
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -162,9 +185,9 @@
                     legend: {
                         labels: {
                             color: '#ffffff', // Altera a cor da fonte das legendas
-                             font:{
-                                size:22
-                             }
+                            font: {
+                                size: 22
+                            }
                         }
                     }
                 },
@@ -172,7 +195,7 @@
                     y: {
                         ticks: {
                             color: '#ffffff',
-                            font:{
+                            font: {
                                 size: 22
                             } // Altera a cor da fonte dos rótulos do eixo Y
                         }
@@ -180,7 +203,7 @@
                     x: {
                         ticks: {
                             color: '#ffffff',
-                            font:{
+                            font: {
                                 size: 22
                             } // Altera a cor da fonte dos rótulos do eixo X
                         }
@@ -188,6 +211,34 @@
                 }
             }
         };
+
+        const configFaixasEtarias = {
+            type: 'bar',
+            data: labels2,
+            options: {
+                y: {
+                        ticks: {
+                            color: '#ffffff',
+                            font: {
+                                size: 22
+                            } // Altera a cor da fonte dos rótulos do eixo Y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#ffffff',
+                            font: {
+                                size: 22
+                        }
+                    }
+                }
+            }
+        };
+
+        let myChartFaixasEtarias = new Chart(
+            document.getElementById('myChartFaixasEtarias'),
+            configFaixasEtarias
+        );
 
 
         // Adicionando gráfico criado em div na tela
@@ -213,13 +264,12 @@
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    obterdados();
-                    // alertar(novoRegistro, idAquario);
+                    // obterdados();
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    // let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    
                     avisoCaptura.innerHTML = ""
 
 
@@ -233,25 +283,51 @@
                         console.log(dados.labels[dados.labels.length - 1])
                         console.log("---------------------------------------------------------------")
                     } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
+                    
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
                         myChart.update();
                     }
 
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    fetch(`/usuarios/faixas-etarias`, { cache: 'no-store' }).then(function (response) {
+  if (response.ok) {
+    response.json().then(function (resposta) {
+      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+      
+      let labels2 = {
+        labels: [],
+        datasets: [{
+          label: 'Quantidade de usuários',
+          data: [],
+          backgroundColor: [],
+          borderColor: 'white',
+          borderWidth: 2,
+        }],
+      };
+
+      for (const registro of resposta) { 
+        labels2.labels.push(registro.faixa_etaria);
+        labels2.datasets[0].data.push(registro.quantidade_usuarios);
+      }
+
+      plotarGrafico(labels2);
+      
+    });
+  } else {
+    console.error('Nenhum dado encontrado ou erro na API');
+  }
+})
+.catch(function (error) {
+  console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+});
+
+                    
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+               
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
             }
         })

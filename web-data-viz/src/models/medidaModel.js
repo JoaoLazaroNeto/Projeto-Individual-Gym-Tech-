@@ -8,9 +8,7 @@ function buscarUltimasMedidas() {
     GROUP BY t.nome
     ORDER BY quantidade DESC`;
 
-    `select idade
-     from usuario
-      order by idade desc`;
+    `select idade from usuario order by idade desc;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
