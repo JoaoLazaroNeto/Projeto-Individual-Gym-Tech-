@@ -8,7 +8,20 @@ function buscarUltimasMedidas() {
     GROUP BY t.nome
     ORDER BY quantidade DESC`;
 
-    `select idade from usuario order by idade desc;`;
+    
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarUltimasMedidas2() {
+
+    var instrucaoSql = 
+
+    ` SELECT idade, COUNT(*) AS quantidade_de_usuarios
+FROM usuario
+GROUP BY idade
+ORDER BY idade DESC`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -30,5 +43,6 @@ function buscarUltimasMedidas() {
 
 module.exports = {
     buscarUltimasMedidas,
+    buscarUltimasMedidas2
     // buscarMedidasEmTempoReal
 }

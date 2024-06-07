@@ -72,27 +72,26 @@
                     treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões
                     estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização
                     de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
+                <div id="alerta"></div>
 
-                    <canvas class="canvas2" id="myChartFaixasEtarias"></canvas>
-                    <span class="textoGrafico">O principal objetivo deste gráfico é fornecer uma representação clara e
-                        concisa das preferências de treino dos usuários. Com ele, é possível identificar quais tipos de
-                        treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões
-                        estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização
-                        de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
-                    
-                    <div id="alerta">
-                    </div>
-                    
-                    
-                    
-                    <div class="btns-dash" id="btnAquario">
-                        <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-                    </div>
-                    <div id="graficos">
-                    </div>
+                <canvas class="canvas2" id="myChartCanvas2"></canvas>
+                <span class="textoGrafico">O principal objetivo deste gráfico é fornecer uma representação clara e
+                    concisa das preferências de treino dos usuários. Com ele, é possível identificar quais tipos de
+                    treinos são mais populares e quais têm menor adesão. Esta análise pode orientar decisões
+                    estratégicas, como a criação de novas rotinas de treino, a alocação de recursos e a personalização
+                    de planos de treino para aumentar a satisfação e a retenção dos usuários.</span>
+                <div id="alerta"></div>
+
+
+
+                <div class="btns-dash" id="btnAquario">
+                    <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+                </div>
+                <div id="graficos">
                 </div>
             </div>
         </div>
+    </div>
 
 
 </body>
@@ -100,9 +99,12 @@
 </html>
 
 <script>
+    let myChart;
+    
+    let proximaAtualizacao;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     obterDadosGrafico();
-    let proximaAtualizacao;
+    obterDadosGrafico2();
 
     function obterDadosGrafico() {
 
@@ -113,6 +115,26 @@
                     resposta.reverse();
 
                     plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosGrafico2() {
+
+        fetch(`/medidas/ultimas2/:idAquario`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico2(resposta);
 
                 });
             } else {
@@ -146,23 +168,12 @@
             }]
         };
 
-        let labels2 = {
-            labels: ['18-40', '41-65', '65+'],
-            datasets: [{
-                label: 'Quantidade de usuários',
-                data: [10, 20, 30, 40, 50, 60, 70, 80, 90],
-                backgroundColor: ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5'],
-                borderColor: 'white',
-                borderWidth: 2,
-            }],
-        };
-
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        // Inserindo valores recebidos em estrutura para plotar o gráfico   
         for (const registro of resposta) {
             labels.push(registro.nome);
             dados.datasets[0].data.push(registro.quantidade);
@@ -212,43 +223,101 @@
             }
         };
 
-        const configFaixasEtarias = {
-            type: 'bar',
-            data: labels2,
-            options: {
-                y: {
-                        ticks: {
-                            color: '#ffffff',
-                            font: {
-                                size: 22
-                            } // Altera a cor da fonte dos rótulos do eixo Y
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: '#ffffff',
-                            font: {
-                                size: 22
-                        }
-                    }
-                }
-            }
-        };
-
-        let myChartFaixasEtarias = new Chart(
-            document.getElementById('myChartFaixasEtarias'),
-            configFaixasEtarias
-        );
-
 
         // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
+        myChart = new Chart(
             document.getElementById(`myChartCanvas`),
             config
         );
 
-        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        // setInterval(() => atualizarGrafico(dados2, myChart2), 2000);
     }
+
+    function plotarGrafico2(resposta) {
+
+console.log('iniciando plotagem do gráfico...');
+
+// Criando estrutura para plotar gráfico
+let labels2 = [];
+
+ let dados2 = {
+    labels: labels2,
+    datasets: [{
+        label: 'Quantidade de usuários',
+        data: [],
+        fill: true,
+        borderWidth: 2,
+        borderColor: 'white',
+        // backgroundColor: ['rgba(255,0,0,0.7)', 'green', '#32b9cd', 'purple', 'yellow']
+        backgroundColor: 'rgb(50,185,205, 0.8)'
+    }]
+};
+
+console.log('----------------------------------------------')
+console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+console.log(resposta)
+
+// Inserindo valores recebidos em estrutura para plotar o gráfico
+for (const registro2 of resposta) {
+    labels2.push(registro2.idade);
+    dados2.datasets[0].data.push(registro2.quantidade_de_usuarios);
+}
+
+console.log('----------------------------------------------')
+console.log('O gráfico será plotado com os respectivos valores:')
+console.log('Labels:')
+console.log(labels2)
+console.log('Dados:')
+console.log(dados2.datasets)
+console.log('----------------------------------------------')
+
+// Criando estrutura para plotar gráfico - config
+const config2 = {
+    type: 'line',
+    data: dados2,
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#ffffff', // Altera a cor da fonte das legendas
+                    font: {
+                        size: 22
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                ticks: {
+                    color: '#ffffff',
+                    font: {
+                        size: 22
+                    } // Altera a cor da fonte dos rótulos do eixo Y
+                }
+            },
+            x: {
+                
+                ticks: {
+                    color: '#ffffff',
+                    font: {
+                        size: 22
+                    } // Altera a cor da fonte dos rótulos do eixo X
+                }
+            },
+        }
+    }
+};
+
+
+// Adicionando gráfico criado em div na tela
+const myChart2 = new Chart(
+    document.getElementById(`myChartCanvas2`),
+    config2
+);
+
+// setInterval(() => atualizarGrafico(dados2, myChart2), 2000);
+}
 
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
@@ -258,9 +327,9 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(dados, myChart) {
 
+        // let dados;
 
-
-        fetch(`/medidas/tempo-real/`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/:idAquario`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -269,66 +338,32 @@
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    
-                    avisoCaptura.innerHTML = ""
+                    // let avisoCaptura = document.getElementById(`avisoCaptura`)
+                    // avisoCaptura.innerHTML = ""
 
 
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
+                        // console.log("---------------------------------------------------------------")
+                        // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        // console.log("Horário do novo dado capturado:")
+                        // console.log(novoRegistro[0].momento_grafico)
+                        // console.log("Horário do último dado capturado:")
+                        // console.log(dados.labels[dados.labels.length - 1])
+                        // console.log("---------------------------------------------------------------")
                     } else {
-                    
+
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                         myChart.update();
                     }
 
-                    fetch(`/usuarios/faixas-etarias`, { cache: 'no-store' }).then(function (response) {
-  if (response.ok) {
-    response.json().then(function (resposta) {
-      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-      
-      let labels2 = {
-        labels: [],
-        datasets: [{
-          label: 'Quantidade de usuários',
-          data: [],
-          backgroundColor: [],
-          borderColor: 'white',
-          borderWidth: 2,
-        }],
-      };
-
-      for (const registro of resposta) { 
-        labels2.labels.push(registro.faixa_etaria);
-        labels2.datasets[0].data.push(registro.quantidade_usuarios);
-      }
-
-      plotarGrafico(labels2);
-      
-    });
-  } else {
-    console.error('Nenhum dado encontrado ou erro na API');
-  }
-})
-.catch(function (error) {
-  console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-});
-
-                    
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                    // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-               
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+
+                // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
             }
         })
             .catch(function (error) {
@@ -336,4 +371,51 @@
             });
 
     }
+
+    function atualizarGrafico2(dados2, myChart2) {
+
+
+
+fetch(`/medidas/ultimas2/:idAquario`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            // obterdados();
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados2);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados2.labels2[dados2.labels2.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].momento_grafico)
+                console.log("Horário do último dado capturado:")
+                console.log(dados2.labels2[dados2.labels2.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+
+                dados2.labels2.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                myChart.update();
+            }
+
+            // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
+        });
+    } else {
+        // console.error('Nenhum dado encontrado ou erro na API');
+
+        // proximaAtualizacao = setInterval(() => atualizarGrafico(dados, myChart), 2000);
+    }
+})
+    .catch(function (error) {
+        // console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
 </script>
