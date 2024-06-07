@@ -24,8 +24,6 @@ body {
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQibdnD-THTt8LSO85WXcFKaiHCGuAIUK-qGXzJ80I1Osn8ZTW77vnhQy6i9-pBOO-DPLo&usqp=CAU');
 }
 
-
-
 .logo {
   display: flex;
   height: 80px;
@@ -176,7 +174,7 @@ body {
   text-align: center;
 }
 
-.box {
+/* .box {
   display: flex;
   height: 100%;
   margin: auto;
@@ -184,6 +182,23 @@ body {
   align-items: center;
   justify-content: center;
   margin-left: 400px;
+} */
+
+.box{
+  display: flex;
+  height: 100%;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 321px;
+  margin-right: 114px;
+  margin-top: 59px;
+}
+
+.orientacaoSimulador{
+  display: inline-block;
+  margin-top: 65px;
 }
 
 .divHomeBranca {
