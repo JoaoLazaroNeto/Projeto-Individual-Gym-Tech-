@@ -123,13 +123,13 @@ body {
 
 .dash {
   width: 90%;
-  position: fixed;
+  position: relative;
   top: 0;
-  left: 12%;
+ margin-left: 12%;
   /* background-color: #66d9ff; */
   background-image: url('https://img.freepik.com/vetores-gratis/fundo-de-textura-azul-angustiado-grunge_1409-2927.jpg?t=st=1717456367~exp=1717459967~hmac=e235a5ad8d0f3411eef16c8872a79ea906e94940a6f52b9b36af1aeb76eb3d69&w=996');
-  height: 100vh;
-  /* overflow: auto; */
+  height: 100%;
+  overflow: auto;
   color: white;
 }
 
@@ -137,8 +137,8 @@ body {
   display: flex;
   color: black;
   margin-left: 770px;
-
-  margin-top: -400px;
+  margin-top: -353px;
+  margin-right: 20px;
   font-size: 28px;
   flex-direction: row;
 }
@@ -360,15 +360,15 @@ canvas {
 
 .canvas2 {
   width: 55% !important;
-  height: 65% !important;
-  align-items: center;
-  justify-content: center;
-  margin-left: 2% ;
-  margin-top: 100px;
-  margin-bottom: 20px;
-  Color: #3C58A0;
-  background-color:#3C58A0 ;
-  border-radius: 10px;
+    height: 65% !important;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2%;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    Color: #3C58A0;
+    background-color: #3C58A0;
+    border-radius: 10px;
 }
 
 /* PAGINA DOS GRÁFICOS 2023 */
@@ -416,16 +416,16 @@ canvas {
 
 .divDash{
   display: inline-block;
-  /* flex-direction: row; */
-   background-image: url('https://img.freepik.com/fotos-gratis/fundo-texturizado-concreto-azul_53876-63608.jpg?t=st=1717458323~exp=1717461923~hmac=622cc798b0fd1de9a64046cbf0056af7364674042ef76dccc393ebde4d9aade8&w=996');
-  margin-top: 5px;
-  height: 85%;
-  width: 95%;
-  margin-left: 1.5%;
-  flex-direction: column;
-  color: #161618;
-  border-radius: 20px;
-  overflow-y: scroll;
+    /* flex-direction: row; */
+    background-image: url(https://img.freepik.com/fotos-gratis/fundo-texturizado-concreto-azul_53876-63608.jpg?t=st=1717458323~exp=1717461923~hmac=622cc79…&w=996);
+    margin-top: 5px;
+    height: 646px;
+    width: 95%;
+    margin-left: 1.5%;
+    flex-direction: column;
+    color: #161618;
+    border-radius: 20px;
+    overflow-y: scroll;
 }
 
 .header-left h1 {

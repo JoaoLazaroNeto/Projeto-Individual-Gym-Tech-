@@ -25,7 +25,7 @@
                         <a href="./index.html"><b class="b">Home</b></a>
                     </li>
                     <li>
-                        <a href="./hidratar.html"><b class="b">Hidrate-se</b></a>
+                        <a href="./simulador.html"><b class="b">Hidrate-se</b></a>
                     </li>
 
                     <img class="logo" src="./assets/ginastica.png" alt="">
@@ -46,9 +46,9 @@
             <div class="box">
                 <h1>Simulador Hidrate-se!</h1>
                 Nome:
-                <input type="text" id="input_nome"><br><br>
+                <input class="inputSimulador" type="text" id="input_nome"><br><br>
                 Peso corporal (Kg):
-                <input type="number" id="input_peso"><br><br>
+                <input class="inputSimulador" type="number" id="input_peso"><br><br>
                 <button class="botaoCalcular" onclick="calcular()">Calcular</button><br><br>
                 <div>
                 <div class="textoResultado" id="div_msg">Insira seus dados nos campos acima!</div>
@@ -66,6 +66,33 @@
         </div>
     </div>
     </div>
+
+    <div class="linha"></div>
+
+    <div class="social">
+        <div class="container">
+            <div class="box">
+                <h1>Simulador de IMC!</h1>
+                Nome:
+                <input class="inputSimulador" type="text" id="input_nome1"><br><br>
+                Peso corporal (Kg):
+                <input class="inputSimulador" type="number" id="input_peso1"><br><br>
+                Altura (Metros):
+                <input class="inputSimulador" type="number" id="input_altura1"><br><br>
+                <button class="botaoCalcular" onclick="calcular2()">Calcular</button><br><br>
+                <div>
+                <div class="textoResultado" id="div_msg2">Insira seus dados nos campos acima!</div>
+            </div>
+            </div>
+            <div class="orientacaoSimulador1">
+                <h1 class="tituloSimulador">Orientações:</h1>
+                Gostaria de saber o seu IMC? <br>
+                Aqui é o seu lugar. Para descobrir o IMC, fazemos o cálculo do peso dividido pela altura ao quadrado. Basta inserir os seus dados no campo ao lado e você poderá comparar o seu IMC com a tabela abaixo! <br><br>
+            <img class="tabela" src="https://lh4.googleusercontent.com/proxy/AoLxdW6n96JG-yBf68h9D1uS7zgmIXVgWsyrslSVDN4iAjdFtcAZu-ZFyQHoarTunzJZYGArD9OhFRaTZhN196idh9pofGA573b7tmpQWXY_I07GGyQAfeJvLw" alt="">
+                </div>
+        </div>
+    </div>
+    </div>
     
         <div class="footer">
             <h4> João Lázaro Neto - SPTech &copy; 2024</h4>
@@ -77,12 +104,22 @@
 
 <script>
     function calcular() {
-        var nome = input_nome.value;
-        var peso = input_peso.value;
+        var nome =  input_nome.value;
+        var peso = Number (input_peso.value);
         var pesoG = peso / 1000;
         var qtd_agua = pesoG * 35;
 
-        div_msg.innerHTML += ` Olá ${nome}, <br><br> o hidrate-se calcula que a quantidade ideal de água para o seu peso corporal é de: ${qtd_agua.toFixed(1)} Litros.`;
+        div_msg.innerHTML = ` Olá ${nome}, <br><br> o hidrate-se calcula que a quantidade ideal de água para o seu peso corporal é de: ${qtd_agua.toFixed(1)} Litros.`;
+
+    }
+
+    function calcular2() {
+        var nome1 = input_nome1.value;
+        var peso1 = Number (input_peso1.value);
+        var altura1 = Number (input_altura1.value);
+        var IMC = peso1 / (altura1 * altura1);
+
+        div_msg2.innerHTML = `Olá, ${nome1}, <br><br> a calculadora de IMC, calculou que o seu IMC é: ${IMC.toFixed(2)} `;
 
     }
 </script>
